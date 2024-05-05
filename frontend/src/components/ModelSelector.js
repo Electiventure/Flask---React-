@@ -1,14 +1,15 @@
 import React from 'react';
+import './css/ModelSelector.css'; 
 
 function ModelSelector({ value, onChange }) {
   return (
-    <label>
-      Select Model:
-      <select value={value} onChange={onChange}>
-        <option value="lstm">LSTM</option>
-        <option value="gru">GRU</option>
+    <div className="model-selector">
+      <label htmlFor="model" className="selector-label">🛠️ Select Model:</label>
+      <select id="model" className="selector" value={value} onChange={onChange}>
+        <option value="lstm">🔍 LSTM</option>
+        <option value="gru">🧠 GRU</option>
       </select>
-    </label>
+    </div>
   );
 }
 

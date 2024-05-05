@@ -1,12 +1,15 @@
+// Import necessary packages and components
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AppNavbar from './components/Navbar';
 import Footer from './components/Footer';
 import Form from './components/Form';
-import Graph from './components/Graph';
 import SentimentCounts from './components/SentimentCounts';
+import Graph from './components/Graph'; 
+import './App.css';
 
 function App() {
+  // State variables
   const [selectedDataset, setSelectedDataset] = useState('DutchBanglaBankFinbert.csv');
   const [selectedModel, setSelectedModel] = useState('lstm');
   const [plotUrl, setPlotUrl] = useState('');
@@ -45,6 +48,7 @@ function App() {
     }
   };
 
+  // Clear submission message after 3 seconds
   useEffect(() => {
     if (submissionMessage) {
       const timer = setTimeout(() => {
@@ -54,8 +58,9 @@ function App() {
     }
   }, [submissionMessage]);
 
+  // Render the components
   return (
-    <div className="d-flex flex-column vh-100">
+    <div className="app-container">
       <AppNavbar />
       <Graph plotUrl={plotUrl} isLoading={isLoading} />
       <SentimentCounts sentimentCounts={sentimentCounts} />
@@ -68,7 +73,6 @@ function App() {
         isLoading={isLoading}
         submissionMessage={submissionMessage}
       />
-
       <Footer />
     </div>
   );
